@@ -26,4 +26,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'javax.annotation:jsr250-api:1.0'
+
+    tasks.withType(AbstractCompile) {
+        options.compilerArgs += ["--add-modules", "java.xml.bind"]
+    }
+
+    tasks.withType(Test) {
+        jvmArgs += ["--add-modules", "java.xml.bind"]
+    }
 }
